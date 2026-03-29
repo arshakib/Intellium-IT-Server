@@ -71,10 +71,6 @@ app.post("/api/settings", async (req: Request, res: Response) => {
   try {
     const { userId, columns } = req.body; 
 
-    // if (columns === undefined || columns === null) {
-    //   return res.status(400).json({ error: "The columns field is missing from the request" });
-    // }
-
     if (!userId) {
       return res.status(400).json({ error: "UserId is required" });
     }
