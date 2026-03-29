@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model WorkOrder {
+  id           Int      @id @default(autoincrement())
+  status       String   
+  wo           String   
+  dateDue      String
+  dateReceived String
+  client       String
+  customer     String? 
+  loan         String?
+  address      String
+  city         String
+  state        String
+  zip          String
+  contractor   String
+  admin        String?
+  workType     String
+  photos       Int      
+  createdAt    DateTime @default(now())
+}
+
+
+model TableSetting {
+  id              Int      @id @default(autoincrement()) 
+  userId          String   @unique @default("default-user") 
+  selectedColumns String   
+  pageSize        Int      @default(50)
+  updatedAt       DateTime @updatedAt
+}
