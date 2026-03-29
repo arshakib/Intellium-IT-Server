@@ -46,7 +46,6 @@ app.get("/api/work-orders", async (req: Request, res: Response) => {
       totalCount: totalCount,
       totalPages: Math.ceil(totalCount / limit),
       currentPage: page,
-    //   isFiltered: !!columnSelector 
     });
   } catch (error) {
     console.error(error);
