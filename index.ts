@@ -5,10 +5,22 @@ import workOrderRoutes from "@/routes/workOrder.routes";
 import settingsRoutes from "@/routes/settings.routes";
 
 const app = express(); 
-const prisma = new PrismaClient(); 
-
-app.use(cors()); 
 app.use(express.json());
+const allowedOrigins = [
+  'https://intellium-it.vercel.app',
+  'http://localhost:5173'
+];
+
+app.use(cors({
+  origin: function(origin, callback){
+    if(!origin) return callback(null, true);
+    if(allowedOrigins.indexOf(origin) === -1){
+      return callback(new Error('CORS Policy Error'), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+}));
 const PORT = 5000;
 
 app.get('/', (req: Request, res: Response) => {
