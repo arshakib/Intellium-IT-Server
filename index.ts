@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express"; 
 import cors from "cors"; 
-import workOrderRoutes from "@/routes/workOrder.routes";
-import settingsRoutes from "@/routes/settings.routes";
+import workOrderRoutes from "./src/routes/workOrder.routes"; 
+import settingsRoutes from "./src/routes/settings.routes"; 
 
 const app = express(); 
 app.use(express.json());
@@ -33,6 +33,10 @@ app.get('/', (req: Request, res: Response) => {
 app.use("/api/work-orders", workOrderRoutes);
 app.use("/api/settings", settingsRoutes);
 
-app.listen(PORT, () => {
-  console.log(`🚀 Backend is running at http://localhost:${PORT}`);
-});
+export default app; 
+
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Backend is running at http://localhost:${PORT}`);
+  });
+}
