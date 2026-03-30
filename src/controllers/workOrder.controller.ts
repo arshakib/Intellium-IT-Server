@@ -16,7 +16,7 @@ export const getWorkOrders = async (req: Request, res: Response) => {
 
     if (savedSetting?.selectedColumns?.trim()) {
       columnSelector = {};
-      savedSetting.selectedColumns.split(",").forEach((col) => {
+      savedSetting.selectedColumns.split(",").forEach((col: string) => {
         columnSelector[col.trim()] = true;
       });
       columnSelector["id"] = true;
