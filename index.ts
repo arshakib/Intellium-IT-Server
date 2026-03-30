@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express"; 
 import cors from "cors"; 
-import { PrismaClient } from "@prisma/client"; 
 import workOrderRoutes from "@/routes/workOrder.routes";
 import settingsRoutes from "@/routes/settings.routes";
 
