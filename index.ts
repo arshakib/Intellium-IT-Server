@@ -10,11 +10,8 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.get('/', (req: Request, res: Response) => {
-  res.send({
-    success: true,
-    message: "Server is running!",
-  });
+app.get("/", (req, res) => {
+  res.json({ message: "API is working!" });
 });
 
 app.use("/api/work-orders", workOrderRoutes);
